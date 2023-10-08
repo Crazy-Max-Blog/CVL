@@ -32,8 +32,10 @@ class window:
             case 2:
                 return [self.l1[0],self.l1[1],"",""]
             case 4:
-                return [self.l1[0],self.l1[1],self.l1[2].split(),self.l1[3].split()]
-        print("error: error file") 
+                print(str(0) not in self.l1[2].split())
+                if len(self.l1[2].split())==len(self.l1[3].split()) and str(0) not in self.l1[2].split():
+                    return [self.l1[0],self.l1[1],self.l1[2].split(),self.l1[3].split()]
+        print("error: error file")
         #return
         
     def w1(self, p):
@@ -43,6 +45,9 @@ class window:
         print(self.rd(p))
         
         print(open(p,'r').read())
-        Label(text=self.rd(p),bg="SteelBlue1").pack()
+        self.d = self.rd(p)
+        self.t = f'Задача типа {self.d[0]}\nЗадача: {self.d[1]}\nНачальное состояние {self.d[2]}\nКонечное сосотояние {self.d[3]}'
+        print(self.t)
+        Label(text=self.t,bg="SteelBlue1").pack()
         self.l = Button(fg="white",activebackground="SteelBlue1",bd=0,bg="SteelBlue1", text="назад", command=self.r)
         self.l.pack(side=LEFT, anchor=SW)    
