@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
+from l import *
 
 class window:
     def __init__(self, r):
@@ -28,10 +29,12 @@ class window:
             self.s = file.read()
         self.l1=self.s.split('\n')
         print(len(self.l1))
-        match len(self.l1):
-            case 2:
+        #match len(self.l1):
+        #    case 2:
+        if len(self.l1)==2:
                 return [self.l1[0],self.l1[1],"",""]
-            case 4:
+        #    case 4:
+        if len(self.l1)==4:
                 print(str(0) not in self.l1[2].split())
                 if len(self.l1[2].split())==len(self.l1[3].split()) and str(0) not in self.l1[2].split():
                     return [self.l1[0],self.l1[1],self.l1[2].split(),self.l1[3].split()]
@@ -46,8 +49,4 @@ class window:
         
         print(open(p,'r').read())
         self.d = self.rd(p)
-        self.t = f'Задача типа {self.d[0]}\nЗадача: {self.d[1]}\nНачальное состояние {self.d[2]}\nКонечное сосотояние {self.d[3]}'
-        print(self.t)
-        Label(text=self.t,bg="SteelBlue1").pack()
-        self.l = Button(fg="white",activebackground="SteelBlue1",bd=0,bg="SteelBlue1", text="назад", command=self.r)
-        self.l.pack(side=LEFT, anchor=SW)    
+        l(self.root, self.d, self.r)
